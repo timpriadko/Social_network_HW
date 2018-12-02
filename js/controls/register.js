@@ -20,6 +20,9 @@ const phoneInput = register_form.elements["phone"];
 const registerPasswordInput = register_form.elements["password"];
 
 // Register handler
+/**
+ * @description Обрабатывает регистрацию пользователя
+ */
 function registerSubmitHandler(e) {
     e.preventDefault();
 
@@ -31,9 +34,7 @@ function registerSubmitHandler(e) {
     register_auth.register(firstNameInput.value, lastNameInput.value, nickNameInput.value, dayOfBirthInput.value, monthOfBirthInput.value, yearOfBirthInput.value, countryInput.value, cityInput.value, genderInput.value, registerEmailInput.value, phoneInput.value, registerPasswordInput.value)
         .then((res) => {
             if (!res.error) {
-                // localStorage.setItem("social_user_id", res.id);
-                // localStorage.setItem("social_user_token", res.token);
-                window.location = "index.html";
+                window.location = "login.html";
             } else {
                 register_message.show({ text: res.message, error: res.error });
             }

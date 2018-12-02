@@ -1,3 +1,4 @@
+/** Validation - класс для валидации форм */
 class Validation {
     constructor(form) {
         this._form = form;
@@ -8,6 +9,9 @@ class Validation {
         this._setEvents();
     }
 
+    /**
+     * @description Проверяет инпуты с артибутом "data-pattern" на валидность
+     */
     check() {
         let state = true;
 
@@ -22,10 +26,16 @@ class Validation {
         return state;
     }
 
+    /**
+     * @description Снимает класс "is-invalid" с инпута на котором ивент "focus"
+     */
     _setEvents() {
         this._inputs.forEach((input) => input.addEventListener("focus", (e) => this._onFocusHandler(e)));
     }
 
+    /**
+     * @description Снимает класс "is-invalid" с инпута
+     */
     _onFocusHandler(e) {
         e.target.classList.remove("is-invalid");
     }
