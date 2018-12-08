@@ -1,5 +1,7 @@
 // Init User service
 const user = new UserService();
+// Image Service
+const imageService = new ImageService();
 // Init User UI
 const userUI = new UserUI();
 // Init Image UI
@@ -7,11 +9,13 @@ const imageUI = new ImageUI();
 // Init Message Module
 const message = new Message();
 message.init();
+// Init Image Modal
+imageModal = new ImageModal();
 
 // UI elements
 const inputCover = document.getElementById("coverImg");
 const inputAddImg = document.getElementById("userPhotos");
-const imgContainer = document.querySelector(".images-wrap");
+const imageWrap = document.querySelector(".images-wrap");
 const submitDeleteBtn = document.getElementById("submit-delete");
 
 // Рендер данных пользователя при загрузке страницы
@@ -53,9 +57,10 @@ inputAddImg.addEventListener("change", (e) => {
 });
 
 // Удаление картинки
-imgContainer.addEventListener("click", (e) => {
+imageWrap.addEventListener("click", (e) => {
+    const image_id = e.target.closest(".img-wrap").dataset.imgId;
+
     if (e.target.closest('.fa-trash-alt')) {
-        const image_id = e.target.closest(".img-wrap").dataset.imgId;
         const image_src = e.target.closest(".img-wrap").firstElementChild.getAttribute("src").substring(56);
 
         submitDeleteBtn.addEventListener("click", (e) => {
@@ -74,7 +79,17 @@ imgContainer.addEventListener("click", (e) => {
                 });
         })
     }
+
+    if (e.target.classList.contains("on-hover")) {
+        imageService.getInfo(image_id)
+            .then(data => imageModal.renderInfo(data))
+            .then(() => $('#imageModal').modal('toggle'))
+            .catch((error) => {
+                console.log(error);
+            });
+    }
 })
+
 
 // Events
 window.addEventListener("load", onLoad);

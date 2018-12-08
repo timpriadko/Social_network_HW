@@ -50,6 +50,7 @@
     </div>
     <!-- /.images-wrap -->
 
+    <!-- Delete Modal -->
     <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -69,7 +70,38 @@
             </div>
         </div>
     </div>
-    <!-- / Modal -->
+
+    <!-- Picture Modal -->
+    <div class="modal fade" id="imageModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div id="loading">
+                <div id="loading-center">
+                    <div id="loading-center-absolute">
+                        <div class="object" id="object_one"></div>
+                        <div class="object" id="object_two" style="left:20px;"></div>
+                        <div class="object" id="object_three" style="left:40px;"></div>
+                        <div class="object" id="object_four" style="left:60px;"></div>
+                        <div class="object" id="object_five" style="left:80px;"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="current-image-info d-flex"></div>
+                    <div class="current-image">
+                        <img src="" alt="">
+                    </div>
+                    <div class="current-image-comments-wrap mt-3"></div>
+                    <div class="add-comment-form mt-4">
+                        <form>
+                            <input type="text" class="form-control roem-control-sm">
+                            <button type="submit" class="btn btn-primary btn-sm mt-3">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
@@ -78,8 +110,10 @@
     <script src="js/config/env.js"></script>
     <script src="js/modules/message.js"></script>
     <script src="js/services/user.js"></script>
+    <script src="js/services/image.js"></script>
     <script src="js/ui/user.js"></script>
     <script src="js/ui/image.js"></script>
+    <script src="js/ui/imageModal.js"></script>
     <script src="js/controls/home.js"></script>
 </body>
 
