@@ -12,9 +12,6 @@ const resetPasswordForm = document.querySelector('.modal-content form');
 const resetPasswordInput = document.querySelector('.modal-content #reset-email');
 
 // Login handler
-/**
- * @description Обрабатывает вход пользователя
- */
 function submitHandler(e) {
     e.preventDefault();
 
@@ -38,9 +35,6 @@ function submitHandler(e) {
 form.addEventListener("submit", submitHandler);
 
 // Reset password handler
-/**
- * @description Обрабатывает сброс пароля пользователя
- */
 function resetPasswordHandler(e) {
     e.preventDefault();
 

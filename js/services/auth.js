@@ -1,4 +1,4 @@
-/** AuthService - класс для отправки апросов на сервер */
+/** AuthService - класс для отправки запросов на сервер */
 class AuthService {
 
     /**
@@ -36,11 +36,11 @@ class AuthService {
      * @param {Number} date_of_birth_month - "emadate_of_birth_monthil" с инпута формы регистрации
      * @param {Number} date_of_birth_year - "emadate_of_birth_yearil" с инпута формы регистрации
      */
-    register(email, password, nickname, first_name, last_name, phone, gender_orientation, city, country, date_of_birth_day, date_of_birth_month, date_of_birth_year) {
+    register(first_name, last_name, nickname, date_of_birth_day, date_of_birth_month, date_of_birth_year, country, city, gender_orientation, email, phone, password) {
         return new Promise((resolve, reject) => {
             fetch(`${env.apiUrl}/public/auth/signup`, {
                     method: "POST",
-                    body: JSON.stringify({ email, password, nickname, first_name, last_name, phone, gender_orientation, city, country, date_of_birth_day, date_of_birth_month, date_of_birth_year }),
+                    body: JSON.stringify({ first_name, last_name, nickname, date_of_birth_day, date_of_birth_month, date_of_birth_year, country, city, gender_orientation, email, phone, password }),
                     headers: {
                         "Content-type": "application/json"
                     }
@@ -57,13 +57,14 @@ class AuthService {
      */
     reset_password(email) {
         return new Promise((resolve, reject) => {
-            fetch(`${env.apiUrl}/panel/auth/reset-password`, {
+            fetch(`https://mostlikedperson-api.herokuapp.com/api/public/auth/reset-password`, {
                     method: "POST",
                     body: JSON.stringify({ email }),
                     headers: {
                         "Content-type": "application/json"
                     }
                 })
+                .then((data) => resolve(data))
                 .catch((error) => reject(error))
         });
     }
